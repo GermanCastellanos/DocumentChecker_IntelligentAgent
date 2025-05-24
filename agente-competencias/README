@@ -1,0 +1,313 @@
+Características Principales
+✅ Problemas Resueltos
+
+❌ Error de extracción de tablas: Reemplazado tabula-py por pdfplumber (sin dependencia Java)
+✅ LLM liviano integrado: Flan-T5 para análisis inteligente
+✅ Vector Database: FAISS para búsquedas semánticas eficientes
+✅ Comparación automática: PDA vs RAE con IA
+
+🔧 Tecnologías
+
+🧠 LLM: Google Flan-T5 (liviano y rápido)
+📊 Vector DB: FAISS (Meta AI)
+🔍 Embeddings: SentenceTransformers
+📑 PDF: pdfplumber + PyMuPDF
+🖥️ Interface: Streamlit
+
+📋 Funcionalidades
+1. 📋 Análisis de PDA (Plan Docente de Asignatura)
+
+Extracción de texto inteligente
+Detección automática de código de curso
+Identificación de competencias por:
+
+Búsqueda de patrones textuales
+Análisis semántico con embeddings
+
+
+Comparación con competencias esperadas
+
+2. 📊 Análisis de RAE (Reflexión de Aprendizaje Esperado)
+
+Extracción mejorada de tablas (sin Java)
+Identificación de competencias con IA
+Normalización automática de datos
+Comparación inteligente RAE vs PDA
+
+3. 🔍 Búsqueda Vectorial
+
+Base de conocimiento indexada
+Búsqueda semántica de competencias
+Similarity scoring avanzado
+Interfaz intuitiva de consulta
+
+4. ⚙️ Configuración y Monitoreo
+
+Estado del sistema en tiempo real
+Gestión de parámetros
+Backup/restore de vector database
+Métricas y estadísticas
+
+🛠️ Instalación Rápida
+Opción 1: Configuración Automática (Recomendada)
+bash# Clona el repositorio
+git clone <tu-repositorio>
+cd agente-competencias
+
+# Ejecuta configuración automática
+python setup.py
+Opción 2: Instalación Manual
+bash# Instalar dependencias
+pip install -r requirements.txt
+
+# Crear archivos de configuración (si no existen)
+python -c "
+import json
+# Crear archivos JSON básicos...
+"
+
+# Ejecutar aplicación
+streamlit run app.py
+📦 Dependencias Principales
+text# Core
+streamlit>=1.28.0
+PyMuPDF>=1.23.0
+pdfplumber>=0.9.0        # ✅ NUEVO: Reemplaza tabula-py
+
+# AI/ML
+sentence-transformers>=2.2.0
+transformers>=4.30.0
+torch>=2.0.0
+faiss-cpu>=1.7.4         # ✅ NUEVO: Vector Database
+
+# Utilities
+pandas>=2.0.0
+numpy>=1.24.0
+regex>=2023.0.0
+🏗️ Arquitectura del Sistema
+┌─────────────────────────────────────────────┐
+│                UI (Streamlit)               │
+├─────────────────────────────────────────────┤
+│              RAG Controller                 │
+├─────────────────┬───────────────────────────┤
+│   PDF Processor │     LLM Analyzer         │
+│   - pdfplumber  │   - Flan-T5 Small        │
+│   - PyMuPDF     │   - Competency Detection │
+├─────────────────┼───────────────────────────┤
+│  Vector Store   │    Embedding Model       │
+│   - FAISS       │   - SentenceTransformers │
+│   - Indexing    │   - Semantic Search      │
+└─────────────────┴───────────────────────────┘
+📊 Estructura de Archivos
+agente-competencias/
+├── app.py                    # ✅ Aplicación principal RAG
+├── setup.py                  # ✅ Script de configuración  
+├── requirements.txt          # ✅ Dependencias actualizadas
+├── run_app.py               # Script de ejecución
+├── 📁 data/
+│   ├── competencias.json
+│   ├── competenciascursos.json
+│   └── abet_es.json
+├── 📁 models/               # Modelos descargados
+└── 📁 vector_db/            # Base vectorial
+🚀 Uso del Sistema
+1. Iniciar Aplicación
+bash# Opción 1: Script personalizado
+python run_app.py
+
+# Opción 2: Streamlit directo
+streamlit run app.py
+2. Análisis de PDA
+
+Navega a "📋 Análisis PDA"
+Sube tu archivo PDF del Plan Docente
+El sistema detectará automáticamente:
+
+Código del curso
+Competencias esperadas
+Competencias presentes
+
+
+Revisa el análisis comparativo con IA
+
+3. Análisis de RAE
+
+Ve a "📊 Análisis RAE"
+Sube el PDF de Reflexión RAE
+El sistema extraerá y analizará:
+
+Tablas de resultados
+Competencias evaluadas
+Porcentajes de aprobación
+
+
+Compara automáticamente con PDA
+
+4. Búsqueda Vectorial
+
+Accede a "🔍 Búsqueda Vectorial"
+Describe lo que buscas en lenguaje natural
+Obtén competencias similares rankeadas por relevancia
+
+🔄 Flujo RAG Mejorado
+mermaidgraph TD
+    A[PDF Upload] --> B[Text/Table Extraction]
+    B --> C[Code Detection]
+    C --> D[Competency Indexing]
+    D --> E[Vector Database]
+    E --> F[Semantic Search]
+    F --> G[LLM Analysis]
+    G --> H[Comparison & Results]
+    
+    I[Expected Competencies] --> D
+    J[Historical Data] --> E
+🎯 Mejoras Implementadas
+✅ Extracción de Tablas Sin Java
+
+Antes: tabula-py + configuración Java compleja
+Ahora: pdfplumber - instalación simple, más confiable
+
+✅ LLM Integrado
+
+Modelo: Google Flan-T5 Small (77M parámetros)
+Funciones:
+
+Identificación de competencias en tablas
+Comparación inteligente PDA vs RAE
+Análisis contextual de documentos
+
+
+
+✅ Vector Database con FAISS
+
+Capacidades:
+
+Indexación automática de competencias
+Búsqueda semántica ultrarrápida
+Persistencia de datos
+Escalabilidad para miles de documentos
+
+
+
+✅ Interfaz Mejorada
+
+Dashboard con métricas en tiempo real
+Alertas inteligentes para alineación PDA-RAE
+Navegación modular por pestañas
+Configuración centralizada del sistema
+
+🎛️ Configuración Avanzada
+Parámetros del Sistema
+python# Umbrales de similitud semántica
+SEMANTIC_THRESHOLD = 0.70      # Competencias generales
+SABERPRO_THRESHOLD = 0.60      # SABER PRO (más flexible)
+
+# Configuración LLM
+LLM_MAX_LENGTH = 512           # Tokens máximos
+LLM_TEMPERATURE = 0.3          # Creatividad (0.0-1.0)
+
+# Vector Database
+FAISS_INDEX_TYPE = "IndexFlatIP"  # Inner Product
+EMBEDDING_DIMENSION = 384         # all-MiniLM-L6-v2
+Variables de Entorno
+bash# Opcional: Configuración avanzada
+export TORCH_DEVICE=cuda              # GPU (si disponible)
+export STREAMLIT_SERVER_PORT=8501     # Puerto personalizado
+export RAG_CACHE_DIR=./cache          # Directorio de caché
+export RAG_LOG_LEVEL=INFO             # Nivel de logging
+📈 Métricas y Monitoreo
+Dashboard del Sistema
+
+📊 Documentos indexados: Cantidad en vector DB
+🎯 Precisión promedio: % de coincidencias PDA-RAE
+⚡ Tiempo de respuesta: Velocidad de procesamiento
+🧠 Uso de memoria: Consumo de recursos
+
+Alertas Automáticas
+
+🟢 Alineación Alta (>80%): PDA-RAE bien sincronizados
+🟡 Alineación Media (60-80%): Revisar competencias faltantes
+🔴 Alineación Baja (<60%): Requiere revisión urgente
+
+🔍 API de Búsqueda
+Búsqueda Vectorial
+python# Ejemplo de uso programático
+from vector_database import VectorDatabase
+from sentence_transformers import SentenceTransformer
+
+# Inicializar
+model = SentenceTransformer('all-MiniLM-L6-v2')
+vector_db = VectorDatabase(model)
+
+# Buscar competencias similares
+query = "habilidades de programación en Python"
+results = vector_db.search(query, k=5)
+
+for doc, score, metadata in results:
+    print(f"Código: {metadata['codigo']}")
+    print(f"Similitud: {score:.3f}")
+    print(f"Descripción: {doc}")
+Análisis con LLM
+python# Análisis automático de tablas
+from rag_analyzer import AnalizadorCompetencias
+
+analyzer = AnalizadorCompetencias(llm_pipeline, vector_db)
+
+# Identificar competencias en tabla
+competencias = analyzer.identificar_competencias_tabla(dataframe)
+
+# Comparar con esperadas
+comparacion = analyzer.comparar_competencias_con_llm(
+    esperadas=["CE1", "CE2", "CG1"], 
+    detectadas=competencias
+)
+🐛 Solución de Problemas
+Error: "No se pueden extraer tablas"
+bash# Verificar que el PDF contiene tablas válidas
+# Usar herramientas online para verificar estructura
+
+# Alternativa: Convertir PDF a imagen y usar OCR
+pip install pytesseract pillow
+Error: "LLM no responde"
+bash# Verificar memoria disponible (mínimo 4GB RAM)
+# Reducir max_length en configuración LLM
+
+# Usar CPU en lugar de GPU si hay problemas
+export TORCH_DEVICE=cpu
+Error: "Vector DB corrupta"
+bash# Reinicializar base vectorial
+rm -rf vector_db/
+python setup.py  # Recrear índices
+Rendimiento Lento
+bash# Optimizaciones:
+pip install faiss-gpu  # Si tienes CUDA
+export OMP_NUM_THREADS=4  # Paralelización CPU
+🔒 Consideraciones de Seguridad
+
+📄 Archivos temporales: Se eliminan automáticamente
+🔐 Datos sensibles: No se almacenan permanentemente
+🌐 Red local: Por defecto solo acceso localhost
+🗂️ Backups: Vector DB encriptada en reposo
+
+🤝 Contribución
+Desarrollo Local
+bash# Configurar entorno de desarrollo
+git clone <repositorio>
+cd agente-competencias
+python -m venv venv
+source venv/bin/activate  # Linux/Mac
+# venv\Scripts\activate   # Windows
+
+pip install -r requirements.txt
+pip install -r requirements-dev.txt  # Dependencias desarrollo
+
+# Ejecutar tests
+pytest tests/
+Estructura de Commits
+feat: nueva funcionalidad
+fix: corrección de bug
+docs: documentación
+style: formato/estilo
+refactor: refactorización
+test: pruebas
+chore: mantenimiento
